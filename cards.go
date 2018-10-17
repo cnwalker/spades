@@ -12,10 +12,10 @@ type Kind int
 
 // Suits
 const (
-	Hearts   Suit = 0
-	Spades   Suit = 1
-	Clubs    Suit = 2
-	Diamonds Suit = 3
+	Hearts Suit = iota
+	Spades
+	Clubs
+	Diamonds
 )
 
 // Kinds
