@@ -12,29 +12,29 @@ type Kind int
 
 // Suits
 const (
-	Hearts   Suit = 0
-	Spades   Suit = 1
-	Clubs    Suit = 2
-	Diamonds Suit = 3
+	Hearts Suit = iota
+	Spades
+	Clubs
+	Diamonds
 )
 
 // Kinds
 const (
-	Two         Kind = 2
-	Three       Kind = 3
-	Four        Kind = 4
-	Five        Kind = 5
-	Six         Kind = 6
-	Seven       Kind = 7
-	Eight       Kind = 8
-	Nine        Kind = 9
-	Ten         Kind = 10
-	Jack        Kind = 11
-	Queen       Kind = 12
-	King        Kind = 13
-	Ace         Kind = 14
-	LittleJoker Kind = 15
-	BigJoker    Kind = 16
+	Two Kind = 2
+	Three
+	Four
+	Five
+	Six
+	Seven
+	Eight
+	Nine
+	Ten
+	Jack
+	Queen
+	King
+	Ace
+	LittleJoker
+	BigJoker
 )
 
 var suitNames = map[Suit]string{
