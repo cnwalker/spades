@@ -43,7 +43,6 @@ func (deck *Deck) Shuffle() {
 
 func (deck *Deck) Distribute(numGroups int, numCards int) ([]hand.Hand, error) {
 	// NOTE: Don't allow more cards than can fill the groups?
-	var curGroup int
 	hands := make([]hand.Hand, numGroups)
 
 	for cardNum := 0; cardNum < numCards; cardNum++ {
@@ -51,16 +50,21 @@ func (deck *Deck) Distribute(numGroups int, numCards int) ([]hand.Hand, error) {
 		if err != nil {
 			return nil, err
 		}
+		curGroup := cardNum % numGroups
 		cardGroups[curGroup] = append(cardGroups[curGroup], poppedCard)
-
-		curGroup %= numGroups
 	}
 
 	return cardGroups, nil
 }
 
+// Distributes all cards in the deck evenly. If they cannot be distributed
+// evenly, deal as many cards as possible to make it even.
 func (deck *Deck) DistributeAll(numGroups int) ([]hand.Hand, error) {
-
+	// Assumption: want to distribute cards evenly, even if that means that not
+	// all cards are dealt.
+	size := deck.Size()
+	roundedSize := (size / numGroups) * numGroups
+	return deck.Distribute(numGroups, roundedSize)
 }
 
 // Generation functions

@@ -2,8 +2,6 @@ package card
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 )
 
 type Suit int
